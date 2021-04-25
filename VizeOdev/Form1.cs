@@ -32,8 +32,10 @@ namespace VizeOdev
         private void Form1_Load(object sender, EventArgs e)
         {
             hedefSite = new XmlTextReader("https://rss.haberler.com/rss.asp?kategori=giresun");
-            
 
+            haberBaslikStream = new FileStream("haber_baslik.txt", FileMode.OpenOrCreate, FileAccess.Write);
+            haberİcerikStream = new FileStream("haber_icerik.txt", FileMode.OpenOrCreate, FileAccess.Write);
+            haberFotoStream   = new FileStream("haber_foto.txt", FileMode.OpenOrCreate, FileAccess.Write);
 
             haberBaslikWriter = new StreamWriter(haberBaslikStream);
             haberİcerikWriter = new StreamWriter(haberİcerikStream);
@@ -58,9 +60,6 @@ namespace VizeOdev
                     //    break;
 
                 }
-
-
-
             }
 
             hedefSite.Close();
