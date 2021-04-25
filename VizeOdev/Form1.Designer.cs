@@ -29,8 +29,10 @@ namespace VizeOdev
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.IcerikLabel = new System.Windows.Forms.Label();
             this.haberBaslikları = new System.Windows.Forms.ListBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // IcerikLabel
@@ -53,6 +55,10 @@ namespace VizeOdev
             this.haberBaslikları.TabIndex = 1;
             this.haberBaslikları.SelectedIndexChanged += new System.EventHandler(this.haberBaslikları_SelectedIndexChanged);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -72,6 +78,7 @@ namespace VizeOdev
 
         private System.Windows.Forms.Label IcerikLabel;
         private System.Windows.Forms.ListBox haberBaslikları;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

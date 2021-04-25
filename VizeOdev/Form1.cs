@@ -17,11 +17,11 @@ namespace VizeOdev
     {
         XmlTextReader hedefSite;
         FileStream haberBaslikStream;
-        FileStream haberİcerikStream;
+        FileStream haberIcerikStream;
         FileStream haberFotoStream;
 
         StreamWriter haberBaslikWriter;
-        StreamWriter haberİcerikWriter;
+        StreamWriter haberIcerikWriter;
 
 
         public Form1()
@@ -34,11 +34,11 @@ namespace VizeOdev
             hedefSite = new XmlTextReader("https://rss.haberler.com/rss.asp?kategori=giresun");
 
             haberBaslikStream = new FileStream("haber_baslik.txt", FileMode.OpenOrCreate, FileAccess.Write);
-            haberİcerikStream = new FileStream("haber_icerik.txt", FileMode.OpenOrCreate, FileAccess.Write);
+            haberIcerikStream = new FileStream("haber_icerik.txt", FileMode.OpenOrCreate, FileAccess.Write);
             haberFotoStream   = new FileStream("haber_foto.txt", FileMode.OpenOrCreate, FileAccess.Write);
 
             haberBaslikWriter = new StreamWriter(haberBaslikStream);
-            haberİcerikWriter = new StreamWriter(haberİcerikStream);
+            haberIcerikWriter = new StreamWriter(haberIcerikStream);
 
             while (hedefSite.Read())
             {
@@ -51,7 +51,7 @@ namespace VizeOdev
 
 
                     case "description":
-                        haberİcerikWriter.WriteLine(hedefSite.ReadString());
+                        haberIcerikWriter.WriteLine(hedefSite.ReadString());
                         break;
 
 
@@ -64,7 +64,7 @@ namespace VizeOdev
 
             hedefSite.Close();
             haberBaslikStream.Close();
-            haberİcerikStream.Close();
+            haberIcerikStream.Close();
             haberFotoStream.Close();
         }
 
@@ -84,6 +84,45 @@ namespace VizeOdev
                 satirSay++;
 
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            hedefSite = new XmlTextReader("https://rss.haberler.com/rss.asp?kategori=giresun");
+            haberBaslikStream = new FileStream("haber_baslik.txt", FileMode.OpenOrCreate, FileAccess.Write);
+            haberIcerikStream = new FileStream("haber_icerik.txt", FileMode.OpenOrCreate, FileAccess.Write);
+            haberFotoStream = new FileStream("haber_foto.txt", FileMode.OpenOrCreate, FileAccess.Write);
+
+            haberBaslikWriter = new StreamWriter(haberBaslikStream);
+            haberIcerikWriter = new StreamWriter(haberIcerikStream);
+
+            while (hedefSite.Read())
+            {
+                switch(hedefSite.Name)
+                {
+                    case "title":
+                        haberBaslikWriter.WriteLine(hedefSite.ReadString());
+                        haberBaslikları.Items.Add(hedefSite.ReadString());
+                        break;
+
+                    case "description":
+                        haberIcerikWriter.WriteLine(hedefSite.ReadString());
+                        break;
+
+                    case "mediad:content":
+                        String test = hedefSite.ReadString();
+                        break;
+
+
+                }
+            }
+
+            hedefSite.Close();
+            haberBaslikStream.Close();
+            haberIcerikStream.Close();
+            haberFotoStream.Close();
+
+
         }
     }
 }
