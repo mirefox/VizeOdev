@@ -30,9 +30,11 @@ namespace VizeOdev
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.IcerikLabel = new System.Windows.Forms.Label();
             this.haberBaslikları = new System.Windows.Forms.ListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // IcerikLabel
@@ -59,11 +61,22 @@ namespace VizeOdev
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(836, 296);
+            this.label1.MaximumSize = new System.Drawing.Size(250, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(247, 136);
+            this.label1.TabIndex = 2;
+            this.label1.Text = resources.GetString("label1.Text");
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1095, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.haberBaslikları);
             this.Controls.Add(this.IcerikLabel);
             this.Name = "Form1";
@@ -79,6 +92,7 @@ namespace VizeOdev
         private System.Windows.Forms.Label IcerikLabel;
         private System.Windows.Forms.ListBox haberBaslikları;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

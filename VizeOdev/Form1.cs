@@ -23,7 +23,7 @@ namespace VizeOdev
         StreamWriter haberBaslikWriter;
         StreamWriter haberIcerikWriter;
 
-
+        private int eskiHaber = 0, yeniHaber=0;
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +31,7 @@ namespace VizeOdev
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             hedefSite = new XmlTextReader("https://rss.haberler.com/rss.asp?kategori=giresun");
 
             haberBaslikStream = new FileStream("haber_baslik.txt", FileMode.OpenOrCreate, FileAccess.Write);
@@ -42,6 +43,7 @@ namespace VizeOdev
 
             while (hedefSite.Read())
             {
+                eskiHaber++;
                 switch (hedefSite.Name)
                 {
                     case "title":
@@ -88,6 +90,8 @@ namespace VizeOdev
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+
+            
             hedefSite = new XmlTextReader("https://rss.haberler.com/rss.asp?kategori=giresun");
             haberBaslikStream = new FileStream("haber_baslik.txt", FileMode.OpenOrCreate, FileAccess.Write);
             haberIcerikStream = new FileStream("haber_icerik.txt", FileMode.OpenOrCreate, FileAccess.Write);
@@ -98,6 +102,7 @@ namespace VizeOdev
 
             while (hedefSite.Read())
             {
+                yeniHaber++;
                 switch(hedefSite.Name)
                 {
                     case "title":
@@ -121,6 +126,10 @@ namespace VizeOdev
             haberBaslikStream.Close();
             haberIcerikStream.Close();
             haberFotoStream.Close();
+            if (yeniHaber > eskiHaber)
+            {
+                MessageBox.Show("Yeni Haber Eklendi");
+            }
 
 
         }

@@ -120,4 +120,8 @@
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Hocam listboxda veriler var ama gözükmüyor tek sıkıntı gözükmemesi baştan yaptım sildim bir şeyi kaçıyorum gözden ama neyi olduğunu bilmiyorum
+Program çalıştığında listboxda ki verilere tıklayınca label 1 de gözüküyor.</value>
+  </data>
 </root>
