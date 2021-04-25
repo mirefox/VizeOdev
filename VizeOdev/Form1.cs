@@ -67,5 +67,23 @@ namespace VizeOdev
             haberİcerikStream.Close();
             haberFotoStream.Close();
         }
+
+        private void haberBaslikları_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FileStream haberIcerik = new FileStream("haber_icerik.txt", FileMode.Open, FileAccess.Read);
+            StreamReader haberOku = new StreamReader(haberIcerik);
+
+            int satirSay = 0;
+            while(haberOku.ReadLine() !=null)
+            {
+                if(satirSay == haberBaslikları.SelectedIndex -1)
+                {
+                    IcerikLabel.Text = haberOku.ReadLine();
+
+                }
+                satirSay++;
+
+            }
+        }
     }
 }
